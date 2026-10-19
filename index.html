@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = "btn"> btn</button>
+    <script>
+    const btn = document.getElementById("btn");
+
+btn.addEventListener("click", async () => {
+    const response = await fetch("/ask", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: "Hello"
+        })
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+
+    // Store the response in a variable
+    const aiResponse = data.response;
+
+    console.log(aiResponse);
+});
+    </script>
+</body>
+</html>
